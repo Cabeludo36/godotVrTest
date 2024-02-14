@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://coibciulba5r8"]
+
+[ext_resource type="Script" path="res://scenes/senarios/main.gd" id="1_gg07c"]
+[ext_resource type="PackedScene" uid="uid://btv44d6mvudh4" path="res://scenes/player/xr_origin_3d.tscn" id="2_xfnen"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oekpl"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jgfyy"]
+size = Vector3(5, 0.1, 5)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_gg07c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 2.17909, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_oekpl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_jgfyy")
+
+[node name="XROrigin3D" parent="." instance=ExtResource("2_xfnen")]
